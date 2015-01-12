@@ -11,6 +11,56 @@ This is my first ansible playbooks. You can create environment below.
 
 I'm not good at creatig server-side environment. Any suggestions are my pleasure.
 
+```
+.
+├── LICENSE
+├── README.md
+├── hosts
+├── roles
+│   ├── common
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── files
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   ├── templates
+│   │   │   └── my_iptables.j2
+│   │   └── vars
+│   │       └── main.yml
+│   ├── nginx
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── files
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   ├── templates
+│   │   │   └── my_nginx.conf.j2
+│   │   └── vars
+│   │       └── main.yml
+│   └── ruby
+│       ├── defaults
+│       │   └── main.yml
+│       ├── files
+│       ├── handlers
+│       │   └── main.yml
+│       ├── meta
+│       │   └── main.yml
+│       ├── tasks
+│       │   └── main.yml
+│       ├── templates
+│       └── vars
+│           └── main.yml
+└── site.yml
+```
+
 ## Environment
 
 - CentOS 7.0 (Digital Ocean)
