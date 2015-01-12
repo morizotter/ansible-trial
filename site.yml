@@ -1,10 +1,9 @@
 ---
-- hosts: ocean
+- hosts: vagrant
   roles:
   - common
   - nginx
   - ruby
-  - nginx-setting
   tasks:
   - name: install memcached
     yum: name=memcached state=present
