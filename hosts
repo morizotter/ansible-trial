@@ -1,0 +1,5 @@
+[ocean]
+xxx.xxx.xxx.xxx
+
+[ocean:vars]
+ansible_ssh_user=root

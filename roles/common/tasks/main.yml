@@ -1,0 +1,33 @@
+---
+- name: create iptables
+  template: src=my_iptables.j2 dest=/etc/sysconfig/iptables
+
+- name: update all packages
+  yum: name=* state=latest
+
+- name: install development tools
+  yum: name='@development tools' state=present
+
+- name: install git
+  yum: name=git state=present
+
+- name: install gcc
+  yum: name=gcc state=present
+
+- name: install curl
+  yum: name=curl state=present
+
+- name: install libyaml-devel
+  yum: name=libyaml-devel state=present
+
+- name: install openssl
+  yum: name={{ item }} state=present
+  with_items:
+    - openssl
+    - openssl-devel
+
+- name: install epel
+  yum: name=epel-release state=present
+
+- name: update all packages
+  yum: name=* state=latest

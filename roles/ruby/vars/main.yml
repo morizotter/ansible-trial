@@ -1,0 +1,7 @@
+---
+rbenv:
+  repo: git://github.com/sstephenson/rbenv.git
+rubybuild:
+  repo: git://github.com/sstephenson/ruby-build.git
+ruby:
+  version: 2.1.5

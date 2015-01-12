@@ -1,0 +1,41 @@
+---
+- name: install ruby
+  yum: name=ruby state=present
+
+- name: check out rbenv
+  git: repo={{ rbenv.repo }} dest=/usr/local/rbenv accept_hostkey=yes
+
+- name: add /usr/local/rbenv/bin to $PATH
+  lineinfile: dest=/etc/profile line=export\ PATH="/usr/local/rbenv/bin:$PATH" regexp=PATH.*rbenv create=yes
+
+- name: add rbenv init
+  lineinfile: dest=/etc/profile line=eval\ \"$(rbenv\ init\ -)\" regexp=eval.*rbenv create=yes
+
+- name: checkout ruby-build as rbenv plugin
+  git: repo={{ rubybuild.repo }} dest=/usr/local/rbenv/plugins/ruby-build accept_hostkey=yes
+
+- name: install ruby-build
+  shell: /usr/local/rbenv/plugins/ruby-build/install.sh
+
+- name: install libffi-devel for CentOS7.0
+  yum: name=libffi-devel state=present
+
+- name: check whether a specific version of ruby is installed or not
+  shell: /usr/local/rbenv/bin/rbenv versions | grep {{ ruby.version }} | tr '*' ' ' | sed -e 's/\s\+//' | cut -f1 -d' '
+  register: rbenv_version
+
+- name: install ruby with rbenv
+  command: /usr/local/rbenv/bin/rbenv install {{ ruby.version }}
+  when: rbenv_version.stdout != "{{ ruby.version }}"
+
+- name: set ruby version global
+  command: /usr/local/rbenv/bin/rbenv global {{ ruby.version }}
+
+- name: update gems
+  command: /usr/local/rbenv/bin/rbenv exec gem update --system
+
+- name: install bundler gem
+  command: /usr/local/rbenv/bin/rbenv exec gem install bundler --no-ri --no-rdoc
+
+- name: rbenv rehash
+  command: /usr/local/rbenv/bin/rbenv rehash

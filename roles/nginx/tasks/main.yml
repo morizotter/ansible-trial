@@ -1,0 +1,19 @@
+---
+- name: install nginx rpm from a remote repo
+  yum: name={{ rpm }} state=present
+
+- name: install nginx
+  yum: name=nginx state=present
+
+- name: rename nginx conf.default to conf.default.original
+  command: mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.original removes=default.conf
+
+- name: apply-nginx.conf
+  template: src=my_nginx.conf.j2 dest=/etc/nginx/conf.d/my_nginx.conf
+
+- name: nginx owner
+  file: path=/etc/nginx owner=nginx group=nginx recurse=yes
+
+- name: start and enable nginx
+  service: name=nginx state=started enabled=yes
+  notify: restart nginx

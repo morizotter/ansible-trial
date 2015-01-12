@@ -1,0 +1,28 @@
+---
+- hosts: ocean
+  roles:
+  - common
+  - nginx
+  - ruby
+  - nginx-setting
+  tasks:
+  - name: install memcached
+    yum: name=memcached state=present
+
+  - name: install node.js
+    yum: name=nodejs state=present
+
+  - name: install npm
+    yum: name=npm state=present
+
+  - name: install ImageMagick
+    yum: name=ImageMagick state=present
+
+  - name: install libxml
+    yum: name=libxml2-devel state=present
+
+  - name: install libxslt
+    yum: name=libxslt-devel state=present
+
+  - name: install sqlite-devel
+    yum: name=sqlite-devel state=present
