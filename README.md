@@ -9,10 +9,17 @@ This is my first ansible playbooks. You can create environment below.
 - Nginx basic settings.
 - Ruby 2.1.5 with rbenv.
 
+I'm not good at creatig server-side environment. Any suggestions are my pleasure.
+
 ## Environment
 
 - CentOS 7.0 (Digital Ocean)
 - Ansible 1.8.2
+
+## Documents
+
+- What's Ansible?: [Ansible is Simple IT Automation](http://www.ansible.com/home)
+- Ansible Documents: [Ansible Documentation — Ansible Documentation](http://docs.ansible.com)
 
 ## Author
 
