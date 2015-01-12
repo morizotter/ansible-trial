@@ -70,6 +70,7 @@ I'm not good at creatig server-side environment. Any suggestions are my pleasure
 
 - What's Ansible?: [Ansible is Simple IT Automation](http://www.ansible.com/home)
 - Ansible Documents: [Ansible Documentation — Ansible Documentation](http://docs.ansible.com)
+- Best practice: [Best Practices — Ansible Documentation](http://docs.ansible.com/playbooks_best_practices.html)
 
 ## Author
 
